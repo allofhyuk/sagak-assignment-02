@@ -29,11 +29,9 @@ export default function CheckupAuthModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState<FormState>(initialForm)
   const { phase, loading, error, requestAuth, confirmAuth, cancel } = useCheckupStore()
 
-  const update = <K extends keyof FormState>(key: K, value: FormState[K]) =>
-    setForm((f) => ({ ...f, [key]: value }))
+  const update = <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((f) => ({ ...f, [key]: value }))
 
-  const canSubmit =
-    form.legalName.trim() !== '' && form.birthdate.length === 8 && form.phoneNo.length >= 10
+  const canSubmit = form.legalName.trim() !== '' && form.birthdate.length === 8 && form.phoneNo.length >= 10
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,17 +47,13 @@ export default function CheckupAuthModal({ onClose }: { onClose: () => void }) {
   return (
     <Modal onClose={close}>
       <h2 className="mb-1 text-center text-lg font-bold tracking-tight">간편인증</h2>
-      <p className="mb-8 text-center text-sm text-slate-500">
-        간편 인증 요청을 위해 아래 정보를 입력해주세요.
-      </p>
+      <p className="mb-8 text-center text-sm text-slate-500">간편 인증 요청을 위해 아래 정보를 입력해주세요.</p>
 
       {phase === 'pending' ? (
         <div className="space-y-4">
           <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
-            <p className="text-sm font-medium text-amber-800">📱 휴대폰에서 간편인증을 완료해주세요</p>
-            <p className="mt-1 text-xs text-amber-700">
-              인증을 마친 뒤 아래 '인증 완료' 버튼을 눌러주세요. (간편인증은 4분 30초 내 완료)
-            </p>
+            <p className="text-sm font-medium text-amber-800">📱 간편인증을 완료해주세요</p>
+            <p className="mt-1 text-xs text-amber-700">휴대폰에서 인증 후 아래 '인증 완료' 버튼을 눌러주세요.</p>
           </div>
           {error && <p className="text-center text-sm text-red-600">{error}</p>}
           <div className="flex justify-center">
@@ -149,11 +143,7 @@ export default function CheckupAuthModal({ onClose }: { onClose: () => void }) {
           {error && <p className="text-center text-sm text-red-600">{error}</p>}
 
           <div className="flex justify-center pt-6">
-            <Button
-              type="submit"
-              variant={loading ? 'loading' : canSubmit ? 'basic' : 'disabled'}
-              className="w-72"
-            >
+            <Button type="submit" variant={loading ? 'loading' : canSubmit ? 'basic' : 'disabled'} className="w-72">
               인증하기
             </Button>
           </div>

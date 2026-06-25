@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/candiy/(.*)", "destination": "https://api.candiy.io/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/candiy/:path*", "destination": "/api/proxy?path=:path*" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

@@ -19,8 +19,8 @@ export interface ApiError {
 }
 
 export const http = axios.create({
-  // 직접 호출 테스트 (CORS 허용 여부 확인용). 안 되면 '/api/candiy/v1'로 되돌리기
-  baseURL: 'https://api.candiy.io/v1',
+  // 프록시 경로 (dev: vite proxy / prod: vercel rewrite → api/proxy 함수). CANDIY가 CORS를 막아 직접 호출 불가
+  baseURL: '/candiy/v1',
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
 })
