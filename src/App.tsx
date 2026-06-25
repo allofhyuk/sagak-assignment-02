@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ProtectedRoute from './routes/ProtectedRoute'
 
-/** 앱 라우트 구성 */
 function App() {
   return (
     <BrowserRouter>

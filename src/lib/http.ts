@@ -1,10 +1,8 @@
-/** axios 공통 인스턴스 — x-api-key 부착, 에러 정규화, 성공 토스트 */
 import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios'
 import { toast } from 'sonner'
 
-/** 요청별 옵션 (axios config의 meta로 전달) */
+// axios config의 meta로 넘기는 요청별 옵션
 export interface RequestMeta {
-  /** 성공 시 띄울 토스트 메시지 */
   successMessage?: string
 }
 
@@ -14,17 +12,15 @@ declare module 'axios' {
   }
 }
 
-/** 정규화된 공통 에러 */
 export interface ApiError {
   status: number | null
   message: string
-  /** 서버 원본 에러 바디 */
   data: unknown
 }
 
 export const http = axios.create({
-  // dev 프록시 경로 (CORS 회피)
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? '/candiy/v1',
+  // 직접 호출 테스트 (CORS 허용 여부 확인용). 안 되면 '/api/candiy/v1'로 되돌리기
+  baseURL: 'https://api.candiy.io/v1',
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
 })

@@ -1,4 +1,3 @@
-/** 서비스 로그인 페이지 (mock) */
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
